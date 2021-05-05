@@ -9,6 +9,9 @@ app.get('/',(req,res)=>{
 app.get('/google-home-page',(req,res)=>{
     res.sendFile(path+"/frontend/html/google.html");
 })
+app.get('/apple-home-page',(req,res)=>{
+    res.sendFile(path+"/frontend/html/apple.html");
+})
 app.listen(port || 5000, ()=>{
     console.log("Server is up and running");
 })
