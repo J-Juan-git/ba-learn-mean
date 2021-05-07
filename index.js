@@ -15,6 +15,13 @@ app.get('/apple-home-page',(req,res)=>{
 app.get('/rgb-generator',(req,res)=>{
     res.sendFile(path+"/frontend/html/rgb-gen.html")
 })
+app.get('/login',(req,res)=>{
+    res.sendFile(path+"/frontend/html/login.html")
+})
+app.get('/signup',(req,res)=>{
+    res.sendFile(path+"/frontend/html/signup.html")
+})
+
 app.listen(port || 5000, ()=>{
     console.log("Server is up and running");
 })
