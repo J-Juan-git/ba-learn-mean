@@ -21,7 +21,9 @@ app.get('/login',(req,res)=>{
 app.get('/signup',(req,res)=>{
     res.sendFile(path+"/frontend/html/signup.html")
 })
-
+app.get('/todo',(req,res)=>{
+    res.sendFile(path+"/frontend/html/todo.html")
+})
 app.listen(port || 5000, ()=>{
     console.log("Server is up and running");
 })

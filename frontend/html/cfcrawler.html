@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="/css/crawler.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="/css/crawler.css">
+</head>
+<body>
+   
+  <div class="container">
+     <div class="table-responsive">
+        <h>Codeforces Data Visualiser</h>
+        <h1 id="userinf"></h1>
+        
+        <table class="table table-bordered table-striped" id="cftable">
+         <tr>
+           
+         </tr>
+        </table>
+
+
+     </div>
+
+  </div>
+  <br><br>
+  <div id="bo">
+   <input type="text" id="contestslug">
+   <button id="contestslug" onclick="getdata()">GetData</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+function getdata(){
+var x = document.getElementById("contestslug").value;
+
+        if(!x) 
+        {
+            alert("Enter a value") ;
+            return ;
+        }
+var api_url="https://codeforces.com/api/user.info?handles="+x;
+
+var apicon="https://codeforces.com/api/user.rating?handle="+x;
+async function getapi(api_url) {
+	
+	// Storing response
+   document.getElementById("userinf").innerHTML = y ;
+   var z="<h1> Rating "+"</h1>";
+	const response = await fetch(url);
+	
+	// Storing data in form of JSON
+	var data = await response.json();
+    var name=data.result[0].handle;
+    var rating=data.result[0].maxRating;
+    var rank=data.result[0].maxRank;
+    console.log(name)
+    document.getElementById("contai").innerHTML=name;
+    document.getElementById("rating").innerHTML=rating;
+    document.getElementById("cat").innerHTML=rank;
+	console.log(data);
+    
+    
+	
+	
+}
+getapi(api_url);
+async function getap(apicon) {
+	
+	
+	const response = await fetch(apicon);
+	$("#contestslug").hide();
+	
+	var data = await response.json();
+   console.log(data);
+  var x='';
+  
+  x+='<th>'+'ContestId'+'</th>';
+  x+='<th>'+'ContestName'+'</th>';
+  x+='<th>'+'Rank'+'</th>';
+  x+='<th>'+'Old Rating'+'</th>';
+  x+='<th>'+'New Rating'+'</th>';
+  for(var i = 0 ; i < data.result.length ; i++)
+   {
+     x += "<tr>" ;
+      x+='<td>'+data.result[i].contestId+'</td>';
+      x+='<td>'+data.result[i].contestName+'</td>';
+      x+='<td>'+data.result[i].rank+'</td>';
+      x+='<td>'+data.result[i].oldRating+'</td>';
+      x+='<td>'+data.result[i].newRating+'</td>';
+      x+="<tr>"
+     
+      
+
+                       
+   }
+                    x += "</table>" ;
+                    document.getElementById("cftable").innerHTML = x ;
+                    x = "" ;
+                }
+	
+    
+    
+	
+	
+
+// Calling that async function
+//getapi(api_url);
+getap(apicon)
+               }
+</script>
+   
+</body>
+</html>
