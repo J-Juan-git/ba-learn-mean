@@ -1,3 +1,4 @@
+console.log("Connected")
 const about = document.querySelector('#about')
 const projects = document.querySelector('#projects')
 const projectContent = document.querySelector("#project-content")
