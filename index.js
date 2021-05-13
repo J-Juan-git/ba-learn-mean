@@ -4,7 +4,7 @@ const port = process.env.PORT;
 const path = __dirname
 app.use(express.static(__dirname+'/frontend'))
 app.get('/',(req,res)=>{
-    res.sendFile(path+"/rontend/html/index.html")
+    res.sendFile(path+"/frontend/html/index.html")
 })
 app.get('/google-home-page',(req,res)=>{
     res.sendFile(path+"/frontend/html/google.html")
