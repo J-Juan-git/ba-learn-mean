@@ -2,6 +2,7 @@ const express = require("express");
 const app = express()
 const port = process.env.PORT;
 const path = __dirname
+const mongoose = require('mongoose')
 app.use(express.static(__dirname+'/frontend'))
 app.get('/',(req,res)=>{
     res.sendFile(path+"/frontend/html/index.html")
@@ -23,6 +24,9 @@ app.get('/signup',(req,res)=>{
 })
 app.get('/todo',(req,res)=>{
     res.sendFile(path+"/frontend/html/todo.html")
+})
+app.get('/tam',(req,res)=>{
+    res.sendFile(path+"/frontend/html/tambola.html")
 })
 app.listen(port || 5000, ()=>{
     console.log("Server is up and running");
